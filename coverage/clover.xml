@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1641301541947" clover="3.2.0">
+  <project timestamp="1641301541947" name="All files">
+    <metrics statements="55" coveredstatements="55" conditionals="16" coveredconditionals="16" methods="9" coveredmethods="9" elements="80" coveredelements="80" complexity="0" loc="55" ncloc="55" packages="1" files="4" classes="4"/>
+    <file name="block.ts" path="/Users/absett/Documents/Work/cryptochain/src/block.ts">
+      <metrics statements="25" coveredstatements="25" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+      <line num="16" count="58" type="stmt"/>
+      <line num="17" count="58" type="stmt"/>
+      <line num="18" count="58" type="stmt"/>
+      <line num="19" count="58" type="stmt"/>
+      <line num="20" count="58" type="stmt"/>
+      <line num="21" count="58" type="stmt"/>
+      <line num="22" count="58" type="stmt"/>
+      <line num="26" count="30" type="stmt"/>
+      <line num="27" count="30" type="stmt"/>
+      <line num="31" count="26" type="stmt"/>
+      <line num="33" count="26" type="stmt"/>
+      <line num="34" count="26" type="stmt"/>
+      <line num="36" count="26" type="stmt"/>
+      <line num="38" count="26" type="stmt"/>
+      <line num="39" count="193" type="stmt"/>
+      <line num="40" count="193" type="stmt"/>
+      <line num="41" count="193" type="stmt"/>
+      <line num="42" count="193" type="stmt"/>
+      <line num="45" count="26" type="stmt"/>
+      <line num="56" count="196" type="stmt"/>
+      <line num="57" count="196" type="cond" truecount="2" falsecount="0"/>
+      <line num="58" count="1" type="stmt"/>
+      <line num="60" count="195" type="cond" truecount="2" falsecount="0"/>
+      <line num="61" count="35" type="stmt"/>
+      <line num="63" count="160" type="stmt"/>
+    </file>
+    <file name="blockchain.ts" path="/Users/absett/Documents/Work/cryptochain/src/blockchain.ts">
+      <metrics statements="25" coveredstatements="25" conditionals="12" coveredconditionals="12" methods="4" coveredmethods="4"/>
+      <line num="10" count="18" type="stmt"/>
+      <line num="14" count="25" type="stmt"/>
+      <line num="19" count="25" type="stmt"/>
+      <line num="24" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="29" count="8" type="stmt"/>
+      <line num="30" count="21" type="stmt"/>
+      <line num="31" count="21" type="stmt"/>
+      <line num="32" count="21" type="stmt"/>
+      <line num="33" count="21" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="37" count="20" type="cond" truecount="2" falsecount="0"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="42" count="19" type="stmt"/>
+      <line num="44" count="19" type="cond" truecount="2" falsecount="0"/>
+      <line num="45" count="3" type="stmt"/>
+      <line num="48" count="3" type="stmt"/>
+      <line num="53" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="54" count="2" type="stmt"/>
+      <line num="55" count="2" type="stmt"/>
+      <line num="59" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="60" count="2" type="stmt"/>
+      <line num="61" count="2" type="stmt"/>
+      <line num="64" count="2" type="stmt"/>
+      <line num="65" count="2" type="stmt"/>
+    </file>
+    <file name="config.ts" path="/Users/absett/Documents/Work/cryptochain/src/config.ts">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="3" count="2" type="stmt"/>
+    </file>
+    <file name="crypto-hash.ts" path="/Users/absett/Documents/Work/cryptochain/src/crypto-hash.ts">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="4" count="3" type="stmt"/>
+      <line num="5" count="217" type="stmt"/>
+      <line num="6" count="217" type="stmt"/>
+      <line num="7" count="217" type="stmt"/>
+    </file>
+  </project>
+</coverage>
