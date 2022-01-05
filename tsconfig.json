@@ -10,7 +10,10 @@
     "sourceMap": true,
     "esModuleInterop": true
   },
+  "typeRoots": [
+    "types"
+  ],
   "files": [
-    "block.ts"
+    "pubsub.ts"
   ]
 }

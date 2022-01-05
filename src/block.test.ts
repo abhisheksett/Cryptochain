@@ -1,4 +1,4 @@
-import hexToBinary from 'hex-to-binary';
+import hexToBinary from 'hex-to-bin';
 import Block from './block';
 import config from './config';
 import { cryptoHash } from './crypto-hash';

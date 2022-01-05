@@ -1,5 +1,5 @@
-import hexToBinary from 'hex-to-binary';
-import type { BlockType, MineBlockInput, AdjustDifficultyInput } from './block.types';
+import hexToBinary from 'hex-to-bin';
+import type { BlockType, MineBlockInput, AdjustDifficultyInput } from './types/block.types';
 import config from './config';
 import { cryptoHash } from './crypto-hash';
 
