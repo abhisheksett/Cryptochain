@@ -2,11 +2,14 @@
 // @ts-ignore
 import redis from 'redis';
 import Blockchain from '../blockchain';
+import TransactionPool from '../wallet/transaction-pool';
 import type { PublishInput } from '../types/pubsub.types';
+import Transaction from '../wallet/transaction';
 
 const CHANNELS = {
     TEST: 'TEST',
-    BLOCKCHAIN: 'BLOCKCHAIN'
+    BLOCKCHAIN: 'BLOCKCHAIN',
+    TRANSACTION: 'TRANSACTION'
 };
 
 class PubSub {
@@ -14,9 +17,11 @@ class PubSub {
     publisher: any; // @todo: need to add specific type
     subscriber: any; // @todo: need to add specific type
     blockchain: Blockchain;
+    transactionPool: TransactionPool;
 
-    constructor({ blockchain }: { blockchain: Blockchain }) {
+    constructor({ blockchain, transactionPool }: { blockchain: Blockchain, transactionPool: TransactionPool }) {
         this.blockchain = blockchain;
+        this.transactionPool = transactionPool;
         this.publisher = redis.createClient();
         this.subscriber = redis.createClient();
 
@@ -49,8 +54,16 @@ class PubSub {
         console.log(`message received. Channel: ${channel}, Message: ${message}`);
 
         const parsedMessage = JSON.parse(message);
-        if (channel === CHANNELS.BLOCKCHAIN) {
-            this.blockchain.replaceChain(parsedMessage);
+
+        switch (channel) {
+            case CHANNELS.BLOCKCHAIN:
+                this.blockchain.replaceChain(parsedMessage);
+                break;
+            case CHANNELS.TRANSACTION:
+                this.transactionPool.setTransaction(parsedMessage);
+                break;
+            default:
+                return;
         }
     }
 
@@ -72,6 +85,13 @@ class PubSub {
         this.publish({
             channel: CHANNELS.BLOCKCHAIN,
             message: JSON.stringify(this.blockchain.chain)
+        })
+    }
+
+    broadcastTransaction(transaction: Transaction) {
+        this.publish({
+            channel: CHANNELS.TRANSACTION,
+            message: JSON.stringify(transaction)
         })
     }
 }
