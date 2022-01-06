@@ -11,5 +11,7 @@ export default {
         hash: 'hash-one',
         nonce: 0,
         difficulty: INITIAL_DIFFICULTY
-    }
+    },
+    STARTING_BALANCE: 1000,
+    CRYPTO_METHOD: 'secp256k1'
 }

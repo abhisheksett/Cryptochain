@@ -2,7 +2,7 @@ import express from 'express';
 import request from 'request';
 import bodyParser from 'body-parser';
 import Blockchain from './blockchain';
-import PubSub from './pubsub';
+import PubSub from './app/pubsub';
 
 const app = express();
 app.use(bodyParser.json());

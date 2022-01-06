@@ -1,6 +1,6 @@
 import Block from './block';
-import type { BlockType, BlockData } from './types/block.types';
-import { cryptoHash } from './crypto-hash';
+import type { BlockType, BlockData } from '../types/block.types';
+import { cryptoHash } from '../util';
 
 class Blockchain {
 

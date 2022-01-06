@@ -1,7 +1,7 @@
 import hexToBinary from 'hex-to-bin';
-import type { BlockType, MineBlockInput, AdjustDifficultyInput } from './types/block.types';
-import config from './config';
-import { cryptoHash } from './crypto-hash';
+import type { BlockType, MineBlockInput, AdjustDifficultyInput } from '../types/block.types';
+import config from '../config';
+import { cryptoHash } from '../util';
 
 class Block {
 

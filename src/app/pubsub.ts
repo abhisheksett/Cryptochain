@@ -1,8 +1,8 @@
 // import { createClient } from 'redis';
 // @ts-ignore
 import redis from 'redis';
-import Blockchain from './blockchain';
-import type { PublishInput } from './types/pubsub.types';
+import Blockchain from '../blockchain';
+import type { PublishInput } from '../types/pubsub.types';
 
 const CHANNELS = {
     TEST: 'TEST',
