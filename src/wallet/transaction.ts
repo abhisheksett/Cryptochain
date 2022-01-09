@@ -1,17 +1,21 @@
 import { v4 as uuidv4 } from 'uuid';
 import { verifySignature } from '../util';
+import config from '../config';
+import type { WalletType } from '../types/wallet.types';
 import type {
     TransactionConstructorInput,
     OutputMapType,
-    WalletType,
-    InputType
-} from '../types/wallet.types';
+    InputType,
+    InputTypeForRewardTransaction
+} from '../types/transaction.types';
+import Wallet from '.';
 
+const { MINING_REWARD, REWARD_INPUT } = config;
 class Transaction {
 
     id: string;
     outputMap: OutputMapType;
-    input: InputType;
+    input: InputType | InputTypeForRewardTransaction;
 
     /**
      * 
@@ -30,10 +34,10 @@ class Transaction {
      *  }
      * }
      */
-    constructor({ senderWallet, recipient, amount }: TransactionConstructorInput) {
+    constructor({ senderWallet, recipient, amount, outputMap, input }: TransactionConstructorInput) {
         this.id = uuidv4();
-        this.outputMap = this.createOutputMap({ senderWallet, recipient, amount });
-        this.input = this.createInput({ senderWallet, outputMap: this.outputMap });
+        this.outputMap = outputMap || this.createOutputMap({ senderWallet, recipient, amount });
+        this.input = input || this.createInput({ senderWallet, outputMap: this.outputMap });
     }
 
     createOutputMap({ senderWallet, recipient, amount }: TransactionConstructorInput): OutputMapType {
@@ -68,6 +72,15 @@ class Transaction {
         }
 
         return true;
+    }
+
+    static rewardTransaction({ minerWallet }: { minerWallet: Wallet }) {
+        return new this({
+            input: REWARD_INPUT,
+            outputMap: {
+                [minerWallet.publicKey]: MINING_REWARD
+            }
+        })
     }
 
     update({ senderWallet, recipient, amount }: TransactionConstructorInput) {

@@ -13,5 +13,9 @@ export default {
         difficulty: INITIAL_DIFFICULTY
     },
     STARTING_BALANCE: 1000,
-    CRYPTO_METHOD: 'secp256k1'
+    CRYPTO_METHOD: 'secp256k1',
+    REWARD_INPUT: {
+        ADDRESS: '*authorized-reward*'
+    },
+    MINING_REWARD: 50
 }

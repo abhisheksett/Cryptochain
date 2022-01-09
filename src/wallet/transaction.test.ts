@@ -1,4 +1,5 @@
 import Wallet from '.';
+import config from '../config';
 import { verifySignature } from '../util';
 import Transaction from './transaction';
 
@@ -151,4 +152,21 @@ describe('Transaction', () => {
             })
         });
     });
+
+    describe('rewardTransaction()', () => {
+        let rewardTransaction: Transaction, minerWallet: Wallet;
+
+        beforeEach(() => {
+            minerWallet = new Wallet();
+            rewardTransaction = Transaction.rewardTransaction({ minerWallet });
+        });
+
+        it('it creates a transacrion with the reward input', () => {
+            expect(rewardTransaction.input).toEqual(config.REWARD_INPUT);
+        });
+
+        it('creates one transaction for the miner with the `MINING_REWARD`', () => {
+            expect(rewardTransaction.outputMap[minerWallet.publicKey]).toEqual(config.MINING_REWARD);
+        })
+    })
 });
