@@ -3,6 +3,7 @@ import Blockchain from '../blockchain';
 import Wallet from '../wallet';
 import TransactionPool from '../wallet/transaction-pool';
 import PubSub from '../app/pubsub';
+import Transaction from '../wallet/transaction';
 
 class TransactionMiner {
 
@@ -19,7 +20,22 @@ class TransactionMiner {
     }
 
     mineTransaction() {
+        const validTransactions = this.transactionPool.validTransactions();
 
+        // generate miner's reward
+        validTransactions.push(
+            Transaction.rewardTransaction({ minerWallet: this.wallet })
+        );
+
+        this.blockchain.addBlock({
+            data: validTransactions
+        });
+
+        // broadcast the chain
+        this.pubSub.broadcastChain();
+
+        // clear transaction pool
+        this.transactionPool.clear();
     }
 }
 

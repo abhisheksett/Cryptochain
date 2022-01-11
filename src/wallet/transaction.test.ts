@@ -162,7 +162,9 @@ describe('Transaction', () => {
         });
 
         it('it creates a transacrion with the reward input', () => {
-            expect(rewardTransaction.input).toEqual(config.REWARD_INPUT);
+            const rewardTransactionInput = { ...rewardTransaction.input };
+            delete rewardTransactionInput.signature;
+            expect(rewardTransactionInput).toEqual(config.REWARD_INPUT);
         });
 
         it('creates one transaction for the miner with the `MINING_REWARD`', () => {

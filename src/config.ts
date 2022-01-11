@@ -15,7 +15,9 @@ export default {
     STARTING_BALANCE: 1000,
     CRYPTO_METHOD: 'secp256k1',
     REWARD_INPUT: {
-        ADDRESS: '*authorized-reward*'
+        address: '*authorized-reward*',
+        timestamp: 0,
+        amount: 0
     },
     MINING_REWARD: 50
 }

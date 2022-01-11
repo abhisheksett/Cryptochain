@@ -19,3 +19,5 @@ export type AdjustDifficultyInput = {
     originalBlock: BlockType;
     timestamp: number;
 }
+
+export type ReplaceChainSuccessCallbackType = () => void;

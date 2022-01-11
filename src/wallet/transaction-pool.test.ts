@@ -2,6 +2,7 @@
 import TransactionPool from './transaction-pool';
 import Wallet from '.';
 import Transaction from './transaction';
+import Blockchain from '../blockchain';
 
 describe('TransactionPool', () => {
 
@@ -67,6 +68,42 @@ describe('TransactionPool', () => {
         it('logs errors for invalid transactions', () => {
             transactionPool.validTransactions();
             expect(errorMock).toHaveBeenCalled();
+        })
+    });
+
+    describe('clear', () => {
+        it('clears the transactions', () => {
+            transactionPool.clear();
+            expect(transactionPool.transactionMap).toEqual({});
+        })
+    });
+
+    describe('clearBlockchainTransactions', () => {
+        it('clears the pool of any existing blockchain transactions', () => {
+            const blockchain = new Blockchain();
+            const expectedTransactionMap = {};
+
+            for (let i = 0; i < 6; i++) {
+                const transaction = new Wallet().createTransaction({
+                    amount: 50,
+                    recipient: 'foo'
+                });
+                transactionPool.setTransaction(transaction);
+
+                if (i % 2 === 0) {
+                    blockchain.addBlock({
+                        data: [transaction]
+                    })
+                } else {
+                    expectedTransactionMap[transaction.id] = transaction;
+                }
+            }
+
+            transactionPool.clearBlockchainTransactions({
+                chain: blockchain.chain
+            });
+
+            expect(transactionPool.transactionMap).toEqual(expectedTransactionMap);
         })
     })
 });

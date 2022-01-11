@@ -1,5 +1,6 @@
 import Transaction from "./transaction";
 import type { TransactionPoolMap } from '../types/transaction.types';
+import type { BlockType } from '../types/block.types';
 
 class TransactionPool {
 
@@ -25,6 +26,22 @@ class TransactionPool {
     validTransactions(): Transaction[] {
         return Object.values(this.transactionMap)
             .filter((transaction) => Transaction.validTransaction(transaction))
+    }
+
+    clear(): void {
+        this.transactionMap = {};
+    }
+
+    clearBlockchainTransactions({ chain }: { chain: BlockType[] }): void {
+        for (let i = 1; i < chain.length; i++) {
+            const block = chain[i];
+
+            for (let transaction of block.data) {
+                if (this.transactionMap[transaction.id]) {
+                    delete this.transactionMap[transaction.id];
+                }
+            }
+        }
     }
 }
 

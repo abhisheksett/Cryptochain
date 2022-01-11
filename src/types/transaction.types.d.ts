@@ -11,9 +11,14 @@ export type TransactionConstructorInput = {
     senderWallet: WalletType;
     recipient: string;
     amount: number;
+    input?: InputType;
     outputMap?: OutputMapType;
-    input?: InputTypeForRewardTransaction;
 };
+
+export type TransactionConstructorInputForReward = {
+    outputMap: OutputMapType;
+    input: InputTypeForRewardTransaction;
+}
 
 export type InputType = {
     timestamp: number;

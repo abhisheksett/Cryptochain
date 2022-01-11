@@ -6,7 +6,8 @@ import type {
     TransactionConstructorInput,
     OutputMapType,
     InputType,
-    InputTypeForRewardTransaction
+    InputTypeForRewardTransaction,
+    TransactionConstructorInputForReward
 } from '../types/transaction.types';
 import Wallet from '.';
 
@@ -15,7 +16,7 @@ class Transaction {
 
     id: string;
     outputMap: OutputMapType;
-    input: InputType | InputTypeForRewardTransaction;
+    input: InputType;
 
     /**
      * 
@@ -59,9 +60,11 @@ class Transaction {
     static validTransaction(transaction: Transaction): boolean {
         const { input: { address, amount, signature }, outputMap } = transaction;
 
-        const outputTotal = Object.values(outputMap).reduce((total, amount) => total + amount);
+        const outputTotal = Object.values(outputMap).reduce((total, currentAmount) => total + currentAmount);
 
         if (amount !== outputTotal) {
+            // console.log('-------------transaction', transaction, outputTotal)
+
             console.error(`Invalid transaction from ${address}`);
             return false;
         }
@@ -75,11 +78,15 @@ class Transaction {
     }
 
     static rewardTransaction({ minerWallet }: { minerWallet: Wallet }) {
+        const rewardInput = { ...REWARD_INPUT, signature: minerWallet.sign([]) }
         return new this({
-            input: REWARD_INPUT,
+            input: rewardInput,
             outputMap: {
                 [minerWallet.publicKey]: MINING_REWARD
-            }
+            },
+            senderWallet: new Wallet(), // this is just dummy field and it won't be considered as input and output are being passed
+            recipient: '', // this is just dummy field and it won't be considered as input and output are being passed
+            amount: 0 // this is just dummy field and it won't be considered as input and output are being passed
         })
     }
 
