@@ -20,6 +20,7 @@ This is a full stack blockchain project which introduces a crypto currency. The 
     - Parcel is used as bundler
     - Express server acts as both web and api server
 
+
 ### TODO
 - Currently Redis is added with an older version and without Typescript support. Need to upgrade it and make it work with latest version
 

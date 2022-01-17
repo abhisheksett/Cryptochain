@@ -1,7 +1,7 @@
 
 const App = () => {
     return (
-        <div>Hello</div>
+        <div>Hello Crypto</div>
     )
 };
 
