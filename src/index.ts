@@ -1,5 +1,6 @@
 import express from 'express';
 import request from 'request';
+import path from 'path';
 import bodyParser from 'body-parser';
 import Blockchain from './blockchain';
 import PubSub from './app/pubsub';
@@ -10,6 +11,8 @@ import TransactionMiner from './app/transaction-miner';
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'client/dist')));
+
 const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
@@ -66,6 +69,10 @@ app.get('/api/wallet-info', (req, res) => {
             address
         })
     })
+});
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/dust/index.html'));
 })
 
 // Sync chain on startup
