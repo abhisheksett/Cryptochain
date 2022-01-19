@@ -1,19 +1,23 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "module": "commonjs",
     "target": "es2016",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "sourceMap": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "outDir": "./src/client/dist",
   },
-  "typeRoots": [
-    "types"
+  "include": [
+    "src"
   ],
-  "files": [
-    "pubsub.ts"
+  "typeRoots": [
+    "node_modules/@types",
+    "src/types"
   ]
 }

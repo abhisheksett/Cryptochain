@@ -9,7 +9,6 @@ This is a full stack blockchain project which introduces a crypto currency. The 
     - Implements proof of work with longest chain method
     - Difficulty check happens on binary bits of the genarated hash instead of leading hasg characters
 
-
 - Features of the app
     - Complete typescript support
     - Developed with TDD approach with 100% test coverage
@@ -17,8 +16,11 @@ This is a full stack blockchain project which introduces a crypto currency. The 
     - Using Redis for pub sub
     - Uses Elliptic curve digital signature algorithm
     - Frontend is built using React
-    - Parcel is used as bundler
+    - Webpack is used as bundler
     - Express server acts as both web and api server
+
+- Scripts
+    - *yarn dev* - To start local dev server. It runs webpack watch and serves the built files from express server. Access url: http://localhost:3000
 
 
 ### TODO

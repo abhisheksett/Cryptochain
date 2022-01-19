@@ -25,7 +25,7 @@ class Transaction {
      *  id: uuid,
      *  outputMap: {
      *      "public key of recipient": "amount transferred",
-     *      "publick key of sender": "available balance after transfer"
+     *      "public key of sender": "available balance after transfer"
      *  },
      *  input: {
      *      timestamp: "transaction time",
@@ -77,7 +77,7 @@ class Transaction {
         return true;
     }
 
-    static rewardTransaction({ minerWallet }: { minerWallet: Wallet }) {
+    static rewardTransaction({ minerWallet }: { minerWallet: Wallet }): Transaction {
         const rewardInput = { ...REWARD_INPUT, signature: minerWallet.sign([]) }
         return new this({
             input: rewardInput,

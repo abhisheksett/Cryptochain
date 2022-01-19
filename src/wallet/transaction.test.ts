@@ -162,7 +162,7 @@ describe('Transaction', () => {
         });
 
         it('it creates a transacrion with the reward input', () => {
-            const rewardTransactionInput = { ...rewardTransaction.input };
+            const rewardTransactionInput: any = { ...rewardTransaction.input };
             delete rewardTransactionInput.signature;
             expect(rewardTransactionInput).toEqual(config.REWARD_INPUT);
         });
